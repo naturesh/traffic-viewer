@@ -20,6 +20,7 @@
 1. Fork or clone this project to your repository
 2. Generate a GitHub Personal Access Token (PAT) ( `public_repo` scope ) and save it in Actions Secrets ( name : `ACCESS_TOKEN` )
    - `traffic-viewer Settings` -> `Secrets and variables` -> `Actions` -> `New Repository Secret`
+   - `traffic-viewer Settings` -> `Actions` -> `General` -> `Workflow permissions` -> `Read and write permissions`
     
 3. Specify a list of repositories to collect traffic data from workflow environment variables within `watch.txt`
 4. The workflow runs to generate traffic images and updates the README automatically

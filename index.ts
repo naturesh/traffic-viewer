@@ -46,7 +46,7 @@ function create_chart(repositories : any) {
         datasets: Object.entries(repositories).map(([name, data]) => ({
           label: name,
           data: set(data as any[]),
-          tension: 0.1
+          tension: 0.3
         }))
       },
       options: {

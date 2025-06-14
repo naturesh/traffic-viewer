@@ -56,7 +56,7 @@ function create_chart(repositories : any) {
         plugins: {
             legend: {
               position: 'right',
-              labels: { font: { size: 18 } }
+              labels: { font: { size: 24 } }
             }
         },
       }

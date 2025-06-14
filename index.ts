@@ -36,7 +36,7 @@ function create_chart(repositories : any) {
 
   const set = (data: any[]) => dates.map(date => data.find(({timestamp}) => timestamp == date)?.count ?? 0)
 
-  const canvas = createCanvas(1600, 800)
+  const canvas = createCanvas(1600, 600)
   const chart  = new Chart(
     canvas as any,
     {

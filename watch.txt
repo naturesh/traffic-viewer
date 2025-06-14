@@ -5,4 +5,3 @@ naturesh/DonationContract_Service
 naturesh/image_crawler
 naturesh/llm-banking-with-nft
 naturesh/xgboost_for_quant
-naturesh/llan

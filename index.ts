@@ -52,7 +52,13 @@ function create_chart(repositories : any) {
       options: {
         devicePixelRatio: 4,
         responsive: false,
-        scales: { x: { type: 'time', time: { unit: 'day' }} }
+        scales: { x: { type: 'time', time: { unit: 'day' }} },
+        plugins: {
+            legend: {
+              position: 'right',
+              labels: { font: { size: 18 } }
+            }
+        },
       }
     }
   )

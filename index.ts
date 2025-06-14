@@ -1,5 +1,5 @@
 import { createCanvas } from "canvas";
-import { Chart, LineController, LineElement, PointElement, LinearScale, TimeScale, Legend, Colors } from "chart.js";
+import { Chart, LineController, LineElement, PointElement, LinearScale, TimeScale, Legend, Colors, LogarithmicScale } from "chart.js";
 import 'chartjs-adapter-date-fns'
 
 Chart.register(
@@ -9,7 +9,8 @@ Chart.register(
   LinearScale,
   TimeScale,
   Legend,
-  Colors
+  Colors,
+  LogarithmicScale
 )
 
 const env_access_token: string = process.env.ACCESS_TOKEN
@@ -34,7 +35,7 @@ async function get_views(repo: string) {
 function create_chart(repositories : any) {
   const dates = Object.values(repositories).flat().map(i => i.timestamp).sort()
 
-  const set = (data: any[]) => dates.map(date => data.find(({timestamp}) => timestamp == date)?.count ?? 0)
+  const set = (data: any[]) => dates.map(date => (data.find(({timestamp}) => timestamp == date)?.count ?? 0) + 1)
 
   const canvas = createCanvas(1600, 600)
   const chart  = new Chart(
@@ -46,13 +47,16 @@ function create_chart(repositories : any) {
         datasets: Object.entries(repositories).map(([name, data]) => ({
           label: name,
           data: set(data as any[]),
-          tension: 0.3
+          tension: 0.2
         }))
       },
       options: {
         devicePixelRatio: 4,
         responsive: false,
-        scales: { x: { type: 'time', time: { unit: 'day' }} },
+        scales: { 
+          x: { type: 'time', time: { unit: 'day' }},
+          y: { type: 'logarithmic' }
+        },
         plugins: {
             legend: {
               position: 'right',

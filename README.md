@@ -37,6 +37,7 @@ Replace `{username}` with your GitHub username.
 
 <br>
 
+## Contributions are always welcome! Please feel free to send a PR at any time.
 
 ## ⚙️ Tech Stack
 

@@ -1,6 +1,6 @@
 naturesh/traffic-viewer
-naturesh/code2vec
 naturesh/deep-learning-paper-practice
 naturesh/image_dataset_maker
-naturesh/llm-banking-with-nft
+naturesh/llm-banking
+naturesh/DonationContract
 naturesh/xgboost_for_quant

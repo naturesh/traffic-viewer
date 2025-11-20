@@ -38,12 +38,12 @@ function create_chart(repositories : any) {
   const set = (data: any[]) => dates.map(date => (data.find(({timestamp}) => timestamp == date)?.count ?? 0) + 1)
 
   const colors = [
-    '#000004',
     '#3b0f70',
     '#8c2981',
     '#de4968',
     '#f89441',
-    '#fec6a5'
+    '#fec6a5',
+    '#fffed4'
   ];
   
   let colorIndex = 0;

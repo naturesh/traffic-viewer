@@ -37,15 +37,15 @@ function create_chart(repositories : any) {
 
   const set = (data: any[]) => dates.map(date => (data.find(({timestamp}) => timestamp == date)?.count ?? 0) + 1)
 
-  // ⬜ 적용할 무채색(모노크롬) 팔레트
   const colors = [
-    '#1a1a1a', 
-    '#4d4d4d', 
-    '#808080', 
-    '#b3b3b3', 
-    '#e6e6e6', 
-    '#cccccc'
+    '#000004',
+    '#3b0f70',
+    '#8c2981',
+    '#de4968',
+    '#f89441',
+    '#fec6a5'
   ];
+  
   let colorIndex = 0;
 
   const canvas = createCanvas(1600, 600)

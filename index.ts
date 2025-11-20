@@ -37,6 +37,7 @@ function create_chart(repositories : any) {
 
   const set = (data: any[]) => dates.map(date => (data.find(({timestamp}) => timestamp == date)?.count ?? 0) + 1)
 
+  // ⬜ 적용할 무채색(모노크롬) 팔레트
   const colors = [
     '#1a1a1a', 
     '#4d4d4d', 
@@ -62,6 +63,7 @@ function create_chart(repositories : any) {
             label: name,
             data: set(data as any[]),
             tension: 0.2,
+            // ✨ 데이터셋 색상만 무채색으로 변경
             borderColor: color,         
             backgroundColor: color,     
             pointRadius: 4,             
@@ -73,29 +75,13 @@ function create_chart(repositories : any) {
         devicePixelRatio: 4,
         responsive: false,
         scales: { 
-          x: { 
-            type: 'time', 
-            time: { unit: 'day' },
-            ticks: { color: '#4d4d4d' }, 
-            grid: { 
-              display: false 
-            }
-          },
-          y: { 
-            type: 'logarithmic',
-            ticks: { color: '#4d4d4d' }, 
-            grid: { 
-              color: '#e6e6e6'
-            }
-          }
+          x: { type: 'time', time: { unit: 'day' }},
+          y: { type: 'logarithmic' }
         },
         plugins: {
             legend: {
               position: 'right',
-              labels: { 
-                font: { size: 24 },
-                color: '#333333' 
-              }
+              labels: { font: { size: 24 } }
             }
         },
       }

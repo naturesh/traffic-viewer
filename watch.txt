@@ -1,7 +1,5 @@
 naturesh/traffic-viewer
-naturesh/deep-learning-paper-practice
 naturesh/image_dataset_maker
 naturesh/llm-banking
 naturesh/DonationContract
-naturesh/xgboost_for_quant
 naturesh/bridge-blip

@@ -76,7 +76,7 @@ function create_chart(repositories : any) {
         responsive: false,
         scales: { 
           x: { type: 'time', time: { unit: 'day' }},
-          y: { type: 'logarithmic', grid: { display: false }}
+          y: { type: 'logarithmic', grid: { display: false }, ticks: { display: false }, border: { display: false }}
         },
         plugins: {
             legend: {

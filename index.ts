@@ -37,6 +37,16 @@ function create_chart(repositories : any) {
 
   const set = (data: any[]) => dates.map(date => (data.find(({timestamp}) => timestamp == date)?.count ?? 0) + 1)
 
+  const colors = [
+    '#1a1a1a', 
+    '#4d4d4d', 
+    '#808080', 
+    '#b3b3b3', 
+    '#e6e6e6', 
+    '#cccccc'
+  ];
+  let colorIndex = 0;
+
   const canvas = createCanvas(1600, 600)
   const chart  = new Chart(
     canvas as any,
@@ -44,23 +54,48 @@ function create_chart(repositories : any) {
       type: 'line',
       data: {
         labels: dates.map(d => new Date(d)),
-        datasets: Object.entries(repositories).map(([name, data]) => ({
-          label: name,
-          data: set(data as any[]),
-          tension: 0.2
-        }))
+        datasets: Object.entries(repositories).map(([name, data]) => {
+          const color = colors[colorIndex % colors.length]; 
+          colorIndex++;
+
+          return {
+            label: name,
+            data: set(data as any[]),
+            tension: 0.2,
+            borderColor: color,         
+            backgroundColor: color,     
+            pointRadius: 4,             
+            pointHoverRadius: 6,        
+          }
+        })
       },
       options: {
         devicePixelRatio: 4,
         responsive: false,
         scales: { 
-          x: { type: 'time', time: { unit: 'day' }},
-          y: { type: 'logarithmic' }
+          x: { 
+            type: 'time', 
+            time: { unit: 'day' },
+            ticks: { color: '#4d4d4d' }, 
+            grid: { 
+              display: false 
+            }
+          },
+          y: { 
+            type: 'logarithmic',
+            ticks: { color: '#4d4d4d' }, 
+            grid: { 
+              color: '#e6e6e6'
+            }
+          }
         },
         plugins: {
             legend: {
               position: 'right',
-              labels: { font: { size: 24 } }
+              labels: { 
+                font: { size: 24 },
+                color: '#333333' 
+              }
             }
         },
       }
@@ -70,9 +105,7 @@ function create_chart(repositories : any) {
   //@ts-ignore
   Bun.write('output.png', canvas.toBuffer('image/png'))
   chart.destroy()
-
 }
-
 
 
 let repositories = {}

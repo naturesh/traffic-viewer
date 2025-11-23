@@ -3,3 +3,4 @@ naturesh/image_dataset_maker
 naturesh/llm-banking
 naturesh/DonationContract
 naturesh/bridge-blip
+naturesh/torch-datakit

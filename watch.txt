@@ -4,3 +4,4 @@ naturesh/llm-banking
 naturesh/DonationContract
 naturesh/bridge-blip
 naturesh/torch-datakit
+naturesh/p2p-pop

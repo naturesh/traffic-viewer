@@ -1,36 +1,36 @@
 
-name: traffic-viewer
-on:
-  schedule:
-    - cron: '0 0 * * *'
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# name: traffic-viewer
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
-  workflow_dispatch:
+#   workflow_dispatch:
 
-jobs:
-  my-job:
-    name: update traffic image
-    runs-on: ubuntu-latest
-    steps:
-      # ...
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+# jobs:
+#   my-job:
+#     name: update traffic image
+#     runs-on: ubuntu-latest
+#     steps:
+#       # ...
+#       - uses: actions/checkout@v4
+#       - uses: oven-sh/setup-bun@v2
 
-      # run any `bun` or `bunx` command
-      - run: bun install canvas chartjs-adapter-date-fns chart.js
-      - run: bun index.ts
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+#       # run any `bun` or `bunx` command
+#       - run: bun install canvas chartjs-adapter-date-fns chart.js
+#       - run: bun index.ts
+#         env:
+#           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Commit and push output.png
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add output.png
-          git commit -m "Update output.png" --allow-empty
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Commit and push output.png
+#         run: |
+#           git config user.name "github-actions"
+#           git config user.email "github-actions[bot]@users.noreply.github.com"
+#           git add output.png
+#           git commit -m "Update output.png" --allow-empty
+#           git push
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
